@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mizan is a simple personal finance tracker built by Mohab Hamdi and Abdelrahman El Aasr."
+    />
+    <title>Mizan | Personal Finance Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./main.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="#home" aria-label="Mizan home">
+          <span class="brand-mark" aria-hidden="true">◒</span> Mizan
+        </a>
+        <nav class="navigation" aria-label="Primary navigation">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#tracker">Tracker</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-content reveal">
+          <p class="eyebrow">Simple money management · Built together</p>
+          <h1>Keep your money<br /><span>in balance.</span></h1>
+          <p class="hero-text">
+            Mizan helps you see your income, expenses, and remaining balance at
+            a glance — without making money management complicated.
+          </p>
+          <a class="hero-cta" href="#tracker">Start tracking <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-badge reveal reveal-delay-2" aria-hidden="true">
+          <span>MH</span><b>×</b><span>AE</span>
+        </div>
+      </section>
+
+      <section class="tracker-section section" id="tracker" aria-labelledby="tracker-title">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Your personal dashboard</p>
+            <h2 id="tracker-title">Make every pound<br />count.</h2>
+          </div>
+          <p class="section-intro">Add a transaction and let Mizan do the math for you.</p>
+        </div>
+
+        <form class="expense-form reveal reveal-delay-1" id="transactionForm">
+          <div class="field-group">
+            <label for="name">Transaction name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="e.g. Groceries"
+              autocomplete="off"
+              maxlength="80"
+              required
+            />
+          </div>
+
+          <div class="field-group">
+            <label for="amount">Amount (EGP)</label>
+            <input
+              type="number"
+              id="amount"
+              name="amount"
+              placeholder="0.00"
+              min="0.01"
+              step="0.01"
+              inputmode="decimal"
+              required
+            />
+          </div>
+
+          <div class="field-group">
+            <label for="type">Type</label>
+            <select id="type" name="type">
+              <option value="expense">Expense</option>
+              <option value="income">Income</option>
+            </select>
+          </div>
+
+          <button id="addButton" type="submit">Add transaction <span aria-hidden="true">+</span></button>
+        </form>
+
+        <div class="summary" aria-label="Financial summary">
+          <article class="summary-card income-card reveal reveal-delay-1">
+            <span class="summary-icon" aria-hidden="true">↗</span>
+            <span class="summary-label">Total income</span>
+            <strong id="totalIncome">0 EGP</strong>
+          </article>
+          <article class="summary-card expense-card reveal reveal-delay-2">
+            <span class="summary-icon" aria-hidden="true">↘</span>
+            <span class="summary-label">Total expenses</span>
+            <strong id="totalExpenses">0 EGP</strong>
+          </article>
+          <article class="summary-card balance-card reveal reveal-delay-3">
+            <span class="summary-icon" aria-hidden="true">=</span>
+            <span class="summary-label">Remaining balance</span>
+            <strong id="balance">0 EGP</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="transactions section" aria-labelledby="transactions-title">
+        <div class="section-heading section-heading-left reveal">
+          <div>
+            <p class="eyebrow">Your activity</p>
+            <h2 id="transactions-title">Recent transactions.</h2>
+          </div>
+          <p class="section-intro">Everything you add stays saved in this browser.</p>
+        </div>
+        <div id="emptyState" class="empty-state reveal">No transactions yet. Add your first one above.</div>
+        <div id="transactionList" class="transaction-list" aria-live="polite"></div>
+      </section>
+
+      <section class="about section" id="about" aria-labelledby="about-title">
+        <div class="about-heading reveal">
+          <p class="eyebrow">The people behind Mizan</p>
+          <h2 id="about-title">Built by two friends<br /><span>who care about details.</span></h2>
+          <p>
+            We made Mizan to keep everyday money tracking clear, calm, and
+            useful. No clutter — just the numbers you need.
+          </p>
+        </div>
+        <div class="team-grid">
+          <article class="team-card reveal">
+            <div class="avatar avatar-mohab" aria-hidden="true">MH</div>
+            <div>
+              <p class="team-label">Co-creator</p>
+              <h3>Mohab Hamdi</h3>
+              <p>Design, ideas, and making the experience feel simple from the first click.</p>
+            </div>
+          </article>
+          <article class="team-card reveal reveal-delay-1">
+            <div class="avatar avatar-abdelrahman" aria-hidden="true">AE</div>
+            <div>
+              <p class="team-label">Co-creator</p>
+              <h3>Abdelrahman El Aasr</h3>
+              <p>Development, interactions, and the logic that keeps the numbers right.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact section reveal" id="contact" aria-labelledby="contact-title">
+        <div class="contact-content">
+          <p class="eyebrow">Have a question?</p>
+          <h2 id="contact-title">Let’s keep things<br /><span>in balance.</span></h2>
+          <p>Built with care by Mohab Hamdi &amp; Abdelrahman El Aasr.</p>
+          <a class="contact-link" href="mailto:A676767@gmail.com">Get in touch <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="contact-orb" aria-hidden="true"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">◒</span> Mizan</a>
+      <p>&copy; 2026 Mizan · Built by Mohab Hamdi &amp; Abdelrahman El Aasr.</p>
+      <a class="back-top" href="#top">Back to top ↑</a>
+    </footer>
+  </body>
+</html>
